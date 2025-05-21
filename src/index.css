@@ -1,0 +1,110 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  min-width: 320px;
+  z-index: -2;
+  min-height: 50%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding: 0;
+  height: 100%;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, #ffffff, #ffffff);
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+}
+
+body::before {
+  background: linear-gradient(45deg, #a2e8ff, #ff90a1);
+  background-size: 200% 200%;
+  animation: gradient1 8s linear infinite;
+  opacity: 1;
+}
+
+body::after {
+  background: linear-gradient(135deg, #a2e8ff, #ff90a1);
+  background-size: 200% 200%;
+  animation: gradient2 8s linear infinite;
+  opacity: 1;
+}
+
+
+@keyframes gradient1 {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes gradient2 {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.flip-clock {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
