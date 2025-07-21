@@ -1,0 +1,24 @@
+.scroll-wrapper {
+  width: 90vw;             /* Never larger than viewport */
+  overflow: hidden;         /* Keep all scroll inside */
+  box-sizing: border-box;
+}
+
+.scroll-inner {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: auto;
+  box-sizing: border-box;
+  max-width: 100%;          /* Prevent overexpansion */
+}
+
+.scroll-inner::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-inner > * {
+  flex: 0 0 auto;
+  margin-right: 1rem;
+}

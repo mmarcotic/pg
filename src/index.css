@@ -12,8 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-
-  box-sizing: border-box;
+  width: 100%;
 }
 *,
 *::before,
@@ -35,56 +34,16 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  display: block;
+  place-items: start;
   justify-content: center;
   min-width: 320px;
   z-index: -2;
   min-height: 50%;
   box-sizing: border-box;
-  overflow-x: hidden;
   padding: 0;
-  height: 100%;
-}
+  background-color: 	#D8E2DC;
 
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(90deg, #ffffff, #ffffff);
-  background-size: 200% 200%;
-  background-repeat: no-repeat;
-}
-
-body::before {
-  background: linear-gradient(45deg, #a2e8ff, #ff90a1);
-  background-size: 200% 200%;
-  animation: gradient1 8s linear infinite;
-  opacity: 1;
-}
-
-body::after {
-  background: linear-gradient(135deg, #a2e8ff, #ff90a1);
-  background-size: 200% 200%;
-  animation: gradient2 8s linear infinite;
-  opacity: 1;
-}
-
-
-@keyframes gradient1 {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes gradient2 {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
 }
 
 h1 {
@@ -93,13 +52,11 @@ h1 {
 }
 
 .flip-clock {
-  width: 40%;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
   overflow: hidden;
-  max-width: 100%;
 }
 
 .container {
@@ -107,4 +64,108 @@ h1 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  align-self: flex-start;
+  top: 0;
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+  width: 100vw;
+  background: linear-gradient(30deg, #a2e8ff, #ff90a1);
+  border-bottom: solid;
+  border-color: #000000;
+  z-index: 10;
+  flex: 1;
+}
+
+.rest-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.guess-gender {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: solid;
+  border-radius: 1rem;
+  border-color: #000000;
+  padding: 1.5rem;
+  background: #dcf3e5;
+}
+
+.title {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  margin: 1rem;
+  margin-top: 0rem;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+}
+.button-container {
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+.button {
+  padding: 1rem;
+  border: solid;
+  border-radius: 1rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: #000000;
+  margin: 1rem;
+  margin-top: 0rem;
+  width: 30vw
+}
+.button:active {
+  opacity: 50%
+}
+
+.wishlist {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: solid;
+  border-radius: 1rem;
+  border-color: #000000;
+  padding: 0.5rem;
+  background: #dcf3e5;
+}
+
+.wishlist-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid;
+  border-radius: 1rem;
+  width: 90vw;
+  border-color: black;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.notification {
+  position: fixed;
+  top: -3.5rem; /* Start off-screen */
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: #333;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  transition: top 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.notification.show {
+  top: 0; /* Slide into view */
 }
