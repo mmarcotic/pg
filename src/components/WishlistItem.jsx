@@ -29,7 +29,7 @@ function WishlistItem(payload) {
                 fetch("https://gjfbb0tle7.execute-api.eu-north-1.amazonaws.com/default/postWishlist", {
                     method: "POST",
                     headers: {"Content-Type" : "text/plain"},
-                    body: `${id},${href},${nickname},${title}`
+                    body: `${id};${href};${nickname};${title}`
                 }).catch((error) => console.error("Error reserving item", error))      
                 setReservedBy(nickname);
                 setIsModalOpen(false);
