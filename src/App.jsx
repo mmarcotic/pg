@@ -44,6 +44,7 @@ function App() {
     .then((data) => {
       const sortedArray = Object.values(data).sort((a, b) => a.id - b.id);
       setWishlistItems(sortedArray)
+      console.log(data)
     })
   }, [])
 
