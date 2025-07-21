@@ -114,6 +114,8 @@ h1 {
 }
 .button {
   padding: 1rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
   border: solid;
   border-radius: 1rem;
   font-family: inherit;

@@ -88,10 +88,10 @@ function App() {
     <div className='rest-body'>
     <div className='guess-gender'>
       <h2 className='title'>
-        {hasVoted ? <>
-        Myslím, že {hasVotedFor == "boy" ? <span style={{color: "rgb(86, 213, 255)", marginLeft:"0.5rem", marginRight:"0.2rem", textShadow: "1px  1px 2px black"}}>KLUK</span> :
-         <div style={{color: "#ff90a1", marginLeft:"0.5rem", marginRight:"0.2rem", textShadow: "1px  1px 2px black"}}>HOLKA</div>}!
-        </> : <> Co to bude? </>}
+        {hasVoted ? <div>
+        Myslím, že {hasVotedFor == "boy" ? <span style={{color: "rgb(86, 213, 255)", textAlign:"center", textShadow: "1px  1px 2px black"}}>KLUK!</span> :
+         <div style={{color: "#ff90a1", textAlign:"center", textShadow: "1px  1px 2px black"}}>HOLKA!</div>}
+        </div> : <> Co to bude? </> }
       </h2>
       <div className='button-container'>
         <span className='button-span'>
