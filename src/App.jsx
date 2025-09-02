@@ -14,10 +14,8 @@ function App() {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [treatsAte, setTreatsAte] = useState(0);
   const [moveByPerc, setMoveByPerc] = useState(11);
-  const finalGender = "NEVIME!";
-  const style = {color: "rgb(86, 213, 255)", textAlign:"center", textShadow: "1px  1px 2px black", fontSize:"6rem"};
-  //const finalGender = "HOLKA!";
-  //const style = {color: "#ff90a1", textAlign:"center", textShadow: "1px  1px 2px black", fontSize:"6rem"};
+  const finalGender = "HOLKA!";
+  const style = {color: "#ff90a1", textAlign:"center", textShadow: "1px  1px 2px black", fontSize:"6rem"};
   const buttonRef = useRef(null);
   const zoeRef = useRef(null);
   const [flyStyle, setFlyStyle] = useState(null);
