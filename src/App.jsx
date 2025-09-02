@@ -1,4 +1,4 @@
-import {React, use, useEffect, useState} from 'react';
+import {React, use, useEffect, useRef, useState} from 'react';
 import FlipClockCountdown from '@leenguyen/react-flip-clock-countdown';
 import '@leenguyen/react-flip-clock-countdown/dist/index.css'
 import WishlistItem from './components/WishlistItem';
@@ -10,8 +10,72 @@ function App() {
   const [currentVotes, setCurrentVotes] = useState([]);
   const [genderRatios, setGenderRatios] = useState([0, 0]);
   const [votersStr, setVotersStr] = useState("");
-  const [displayedGenderRatios, setDisplayedGenderRatios] = useState(["", ""])
-  const [wishlistItems, setWishlistItems] = useState([])
+  const [displayedGenderRatios, setDisplayedGenderRatios] = useState(["", ""]);
+  const [wishlistItems, setWishlistItems] = useState([]);
+  const [treatsAte, setTreatsAte] = useState(0);
+  const [moveByPerc, setMoveByPerc] = useState(11);
+  const finalGender = "NEVIME!";
+  const style = {color: "rgb(86, 213, 255)", textAlign:"center", textShadow: "1px  1px 2px black", fontSize:"6rem"};
+  //const finalGender = "HOLKA!";
+  //const style = {color: "#ff90a1", textAlign:"center", textShadow: "1px  1px 2px black", fontSize:"6rem"};
+  const buttonRef = useRef(null);
+  const zoeRef = useRef(null);
+  const [flyStyle, setFlyStyle] = useState(null);
+  const [hearts, setHearts] = useState(false);
+  const [heartsPos, setHeartsPos] = useState([]);
+
+  const handleBoneClick = () => {
+    const buttonRect = buttonRef.current.getBoundingClientRect();
+    const zoeRect = zoeRef.current.getBoundingClientRect();
+
+    const startX = buttonRect.left + buttonRect.width / 2;
+    const startY = buttonRect.top + buttonRect.height / 2;
+
+    const endX = zoeRect.left + zoeRect.width / 2;
+    const endY = zoeRect.top + zoeRect.height / 2;
+
+    setHeartsPos([endX, endY])
+
+    const style = {
+      position: "fixed",
+      left: startX + "px",
+      top: startY + "px",
+      transform: "translate(-50%, -50%)",
+    };
+
+    setFlyStyle(style);
+
+    requestAnimationFrame(() => {
+      setFlyStyle(prev => ({
+        ...prev,
+        transition: "all 0.8s ease-in-out",
+        left: endX + "px",
+        top: endY + "px",
+        fontSize: "3rem"
+      }));
+    });
+
+    setTimeout(() => {
+      setFlyStyle(null);   
+      setHearts(true);     
+      setTimeout(() => setHearts(false), 1200); 
+    }, 850);
+  };
+
+  const feedZoe = () => {
+    handleBoneClick();
+    setTimeout(() => {
+      setTreatsAte(treatsAte + 1)
+      if (treatsAte == 0) {
+        setMoveByPerc(10);
+      }
+      else if (treatsAte < 4) {
+        setMoveByPerc(10 - 2*treatsAte)
+      } else {
+        setMoveByPerc(0)
+      }
+    }, 850)
+  }
 
   const vote = (gender) => {
     fetch("https://zgnui5vhq7.execute-api.eu-north-1.amazonaws.com/default/postBabyGender", {
@@ -85,8 +149,41 @@ function App() {
     digitBlockStyle={{width: 30, height: 45, fontSize: 25}}
     labelStyle={{fontSize: 15}}
     />
+    <button ref={buttonRef} className='button reveal-button'onClick={() => feedZoe()}>🦴</button>
+    {flyStyle && (
+      <div style={flyStyle}>🦴</div>
+    )}
+    {hearts && (
+      <div 
+        className="hearts-container"
+        style={{
+          position: "fixed",
+          left: heartsPos[0] + "px",
+          top: heartsPos[1] - 50 + "px",
+          transform: "translate(-50%, -50%)"
+        }}
+      >
+        <span className="heart heart1">💙</span>
+        <span className="heart heart2">🤍</span>
+        <span className="heart heart3">❤️</span>
+      </div>
+    )}
     </div>
-    <div className='rest-body'>
+    <div className='rest-body' style={{transform: `translateY(-${moveByPerc}%)`}}>
+    <div className='reveal'>
+        <div className='reveal-card'>
+          <p style={style}>{finalGender}</p>
+          <p>...</p>
+          <p>...</p>
+          <p>TO</p>
+          <p>JE</p>
+        </div>
+        <img ref={zoeRef} src="src/assets/zoe.png" className='reveal-img'></img>
+        <p>Chceš konečně vědět, co to bude?</p>
+        <p>Tak dej Zoince kost!</p>
+        <p>Stačí párkrát stisknout tlačítko dole.</p>
+        <br></br>
+    </div>
     <div className='guess-gender'>
       <h2 className='title'>
         {hasVoted ? <div>
