@@ -178,7 +178,7 @@ function App() {
           <p>TO</p>
           <p>JE</p>
         </div>
-        <img ref={zoeRef} src="src/assets/zoe.png" className='reveal-img'></img>
+        <img ref={zoeRef} src="/zoe.png" className='reveal-img'></img>
         <p>Chceš konečně vědět, co to bude?</p>
         <p>Tak dej Zoince kost!</p>
         <p>Stačí párkrát stisknout tlačítko dole.</p>
