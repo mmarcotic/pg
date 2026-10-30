@@ -71,7 +71,9 @@ function WishlistItem(payload) {
                 </div>
 
                 <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                    {/* Your existing modal content */}
+                    <h2 className="title">Tvoje jméno</h2>
+                    <input className="input" placeholder='např. Zoe a Madlenka' onChange={handleChange}></input>
+                    <button className='button' style={{background: "transparent", paddingTop: "0.5rem", paddingBottom:"0.5rem", borderRadius:"0.5rem"}} onClick={reserveItem}>Potvrdit</button>
                 </Modal>
 
                 {reservedBy && (
