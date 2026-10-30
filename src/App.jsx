@@ -25,20 +25,20 @@ function App() {
     <div className='container'>
     <div className='flip-clock'>
           <div style={{display: "flex", flexDirection: "row"}}>
-    <p style={{transform: "translateY(-10px)", paddingRight:"5px"}}>🎄</p>
+    <p className='countdown-emoji'>🎄</p>
     <FlipClockCountdown to={targetDateXmas}
     labels={['DNÍ', 'HODIN', 'MINUT', 'VTEŘIN']}
-    separatorStyle={{color: "rgba(255,255,255,1)", size:"3px"}}
-    digitBlockStyle={{width: 28, height: 45, fontSize: 25}}
+    separatorStyle={{color: "rgba(0,0,0,1)", size:"3px"}}
+    digitBlockStyle={{width: 25, height: 40, fontSize: 30}}
     labelStyle={{fontSize: 15}}
     />
     </div>
       <div style={{display: "flex", flexDirection: "row"}}>
-      <p style={{transform: "translateY(-10px)", paddingRight:"5px"}}>🎂</p>
+      <p className='countdown-emoji'>🎂</p>
     <FlipClockCountdown to={targetDate}
     labels={['DNÍ', 'HODIN', 'MINUT', 'VTEŘIN']}
-    separatorStyle={{color: "rgba(255,255,255,1)", size:"3px"}}
-    digitBlockStyle={{width: 28, height: 45, fontSize: 25}}
+    separatorStyle={{color: "rgba(0,0,0,1)", size:"3px"}}
+    digitBlockStyle={{width: 25, height: 40, fontSize: 30}}
     labelStyle={{fontSize: 15}}
     />
     </div>

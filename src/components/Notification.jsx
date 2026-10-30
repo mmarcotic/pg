@@ -1,11 +1,18 @@
+
 import React from 'react';
 
-const NotificationComponent = ({visible, message, color}) => {
+const NotificationComponent = ({ visible, message, color }) => {
   return (
-    <div style={{backgroundColor: color}}className={`notification ${visible ? 'show' : ''}`}>
+    <div
+      className={`notification ${visible ? 'show' : ''}`}
+      style={{ '--notification-color': color }}
+      role="status"
+      aria-live="polite"
+      aria-hidden={!visible}
+    >
       {message}
     </div>
   );
-}
+};
 
 export default NotificationComponent;
